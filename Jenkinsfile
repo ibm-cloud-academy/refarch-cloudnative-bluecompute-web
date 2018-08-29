@@ -50,8 +50,8 @@ podTemplate(label: 'gradlePod',
                 wget --no-check-certificate https://10.10.1.10:8443/api/cli/icp-linux-amd64
                 export HELM_HOME=$HOME/.helm
                 bx plugin install icp-linux-amd64
-                bx pr login -a https://10.10.1.10:8443 --skip-ssl-validation -u \${DOCKER_USER} -p \${DOCKER_PASSWORD} -c id-cloudcluster-account
-                bx pr cluster-config cloudcluster
+                bx pr login -a https://10.10.1.10:8443 --skip-ssl-validation -u \${DOCKER_USER} -p \${DOCKER_PASSWORD} -c id-mycluster-account
+                #bx pr cluster-config cloudcluster
                 helm init --client-only
                 helm repo add bluecompute https://raw.githubusercontent.com/ibm-cloud-academy/icp-jenkins-helm-bluecompute/master/charts
                 helm install --tls -n bluecompute-web --set image.repository=\${REGISTRY}/\${NAMESPACE}/bluecompute-ce-web --set image.tag=${env.BUILD_NUMBER} bluecompute/web
